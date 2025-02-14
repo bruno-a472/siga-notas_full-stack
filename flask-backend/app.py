@@ -136,7 +136,12 @@ def receber_login():
     s = dados['senha']
     # print(dados)  # Adicionar em caso de testes
     chrome_options = Options()
-    chrome_options.add_experimental_option('detach', True)
+    # chrome_options.add_experimental_option('detach', True)
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")  
+    chrome_options.add_argument("--no-sandbox")  
+    chrome_options.add_argument("--disable-dev-shm-usage")  
+
 
     id = ids.geraId()
     # Inserir primeira árvore que possui Driver
