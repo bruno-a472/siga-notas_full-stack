@@ -204,6 +204,10 @@ def scrapeNotas(id: int):
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def home():
+    return 'API funcionando!'
+
 @app.route('/api/login', methods=['POST'])
 def receber_login():
     print('\n\n\n\ndados recebidos para login')
@@ -212,12 +216,13 @@ def receber_login():
     s = dados['senha']
     # print(dados)  # Adicionar em caso de testes
     chrome_options = Options()
-    chrome_options.add_experimental_option('detach', True)
-    # chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("--disable-gpu")  
-    # chrome_options.add_argument("--no-sandbox")  
-    # chrome_options.add_argument("--disable-dev-shm-usage")  
-
+    # chrome_options.add_experimental_option('detach', True)
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")  
+    chrome_options.add_argument("--no-sandbox")  
+    chrome_options.add_argument("--disable-dev-shm-usage")  
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-infobars")
 
     id = ids.geraId()
     # Inserir primeira árvore que possui Driver
